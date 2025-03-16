@@ -6,15 +6,22 @@ interface SettingsProps {
   title: string;
   subtitle: string;
   defaultTime: string;
-  onSettingsChange: (settings: { title: string; subtitle: string; defaultTime: string }) => void;
+  timerText: string;
+  onSettingsChange: (settings: {
+    title: string;
+    subtitle: string;
+    defaultTime: string;
+    timerText: string;
+  }) => void;
 }
 
-export const Settings = ({ title, subtitle, defaultTime, onSettingsChange }: SettingsProps) => {
+export const Settings = ({ title, subtitle, defaultTime, timerText, onSettingsChange }: SettingsProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
-    title,
-    subtitle,
-    defaultTime,
+    title: title || '',
+    subtitle: subtitle || '',
+    defaultTime: defaultTime || '5:00',
+    timerText: timerText || 'Countdown to Launch'
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -77,6 +84,17 @@ export const Settings = ({ title, subtitle, defaultTime, onSettingsChange }: Set
                     value={formData.subtitle}
                     onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 focus:outline-none focus:border-white/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1">Timer Text</label>
+                  <input
+                    type="text"
+                    value={formData.timerText}
+                    onChange={(e) => setFormData({ ...formData, timerText: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 focus:outline-none focus:border-white/20"
+                    placeholder="Text above timer"
                   />
                 </div>
 

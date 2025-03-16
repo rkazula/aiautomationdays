@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
+import { useAudio } from '../context/AudioContext';
 
 interface TimerProps {
   defaultTime: string;
@@ -8,6 +9,7 @@ interface TimerProps {
 export const Timer = ({ defaultTime }: TimerProps) => {
   const [time, setTime] = useState(300);
   const [isRunning, setIsRunning] = useState(false);
+  const { togglePlay, isPlaying } = useAudio();
 
   useEffect(() => {
     const newTime = parseTimeInput(defaultTime);
@@ -29,6 +31,7 @@ export const Timer = ({ defaultTime }: TimerProps) => {
 
   const toggleTimer = () => {
     setIsRunning(!isRunning);
+    togglePlay();
   };
 
   const resetTimer = () => {
