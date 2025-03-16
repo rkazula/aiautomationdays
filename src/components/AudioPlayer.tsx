@@ -44,7 +44,7 @@ export const AudioPlayer = () => {
       />
       <audio
         ref={audioRef}
-        src="/assets/AIAutomationDays2025.mp3"
+        src="assets/AIAutomationDays2025.mp3"
         loop
       />
     </div>
