@@ -5,6 +5,7 @@ import { Timer } from './components/Timer';
 import { AudioPlayer } from './components/AudioPlayer';
 import { Settings } from './components/Settings';
 import { AudioProvider } from './context/AudioContext';
+import { SpaceBackground } from './components/SpaceBackground';
 
 function App() {
   const [settings, setSettings] = useState(() => {
@@ -27,6 +28,8 @@ function App() {
   return (
     <AudioProvider>
       <div className="relative min-h-screen bg-gradient-to-br from-navy-950 via-carbon-900 to-carbon-950 text-white overflow-hidden">
+        <SpaceBackground />
+
         <Settings
           title={settings.title}
           subtitle={settings.subtitle}
@@ -34,29 +37,6 @@ function App() {
           timerText={settings.timerText}
           onSettingsChange={setSettings}
         />
-
-        {/* Background particles */}
-        <div className="absolute inset-0 opacity-50">
-          {[...Array(50)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full"
-              initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight
-              }}
-              animate={{
-                y: [null, '100vh'],
-                opacity: [0.8, 0]
-              }}
-              transition={{
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                ease: 'linear'
-              }}
-            />
-          ))}
-        </div>
 
         {/* Main content */}
         <div className="relative z-10 container mx-auto px-4 py-12 min-h-screen flex flex-col items-center justify-center">
