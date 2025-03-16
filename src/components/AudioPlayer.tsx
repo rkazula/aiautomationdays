@@ -1,28 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
+import { useAudio } from '../context/AudioContext';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const { sound, isPlaying, togglePlay } = useAudio();
 
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  useEffect(() => {
+    sound.volume(volume);
+  }, [volume, sound]);
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
   };
 
   return (
@@ -41,11 +31,6 @@ export const AudioPlayer = () => {
         value={volume}
         onChange={handleVolumeChange}
         className="w-24 accent-white"
-      />
-      <audio
-        ref={audioRef}
-        src="https://github.com/rkazula/aiautomationdays/blob/master/assets/AIAutomationDays2025.mp3"
-        loop
       />
     </div>
   );
