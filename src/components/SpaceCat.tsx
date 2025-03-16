@@ -69,7 +69,7 @@ export const SpaceCat = () => {
             <img 
               src="https://github.com/rkazula/aiautomationdays/blob/master/assets/kotek.jpg"
               alt="Cat in Space"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg transform -rotate-3 size-110"
+              className="absolute inset-0 w-full h-full object-cover rounded-lg transform -rotate-3 size-15"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent rounded-lg" />
           </div>
