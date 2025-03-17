@@ -54,10 +54,10 @@ export const Settings = ({ title, subtitle, defaultTime, timerText, onSettingsCh
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md glass-panel p-6 rounded-xl z-50"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-[85%] md:w-[500px] glass-panel p-4 sm:p-6 rounded-xl z-50"
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold">Settings</h2>
+                <h2 className="text-lg sm:text-xl font-semibold">Settings</h2>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-1 rounded-full hover:bg-white/10 transition-colors"

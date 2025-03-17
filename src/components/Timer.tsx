@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 
@@ -41,7 +41,7 @@ export const Timer = ({ defaultTime }: TimerProps) => {
 
   useEffect(() => {
     let interval: number;
-    
+
     if (isRunning && time > 0) {
       interval = window.setInterval(() => {
         setTime((prevTime) => {
@@ -59,22 +59,25 @@ export const Timer = ({ defaultTime }: TimerProps) => {
   }, [isRunning, time]);
 
   return (
-    <div className="flex flex-col items-center space-y-8">
-      <div className="text-[360px] font-bold font-mono leading-none tracking-tighter">
+    <div className="flex flex-col items-center space-y-4 md:space-y-8">
+      <div className="text-[140px] sm:text-[220px] md:text-[360px] font-bold font-mono leading-none tracking-tighter">
         {formatTime(time)}
       </div>
-      <div className="flex space-x-6">
+      <div className="flex space-x-4 md:space-x-6">
         <button
           onClick={toggleTimer}
-          className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
-          {isRunning ? <Pause size={32} /> : <Play size={32} />}
+          {isRunning ?
+            <Pause size={24} className="md:w-8 md:h-8" /> :
+            <Play size={24} className="md:w-8 md:h-8" />
+          }
         </button>
         <button
           onClick={resetTimer}
-          className="p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
-          <RotateCcw size={32} />
+          <RotateCcw size={24} className="md:w-8 md:h-8" />
         </button>
       </div>
     </div>
