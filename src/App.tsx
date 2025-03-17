@@ -62,7 +62,7 @@ function App() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-[min(22vw,22vh)] aspect-square mb-16"
+            className="w-[min(22vw,22vh)] aspect-square mb-4"
           >
             <SpaceCat />
           </motion.div>
@@ -71,10 +71,10 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full mt-auto"
+            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full -mt-[15%]"
             style={{ height: 'min(45vh, 70vw)' }}
           >
-            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[2vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
+            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[1vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
               {settings.timerText}
             </h3>
             <Timer defaultTime={settings.defaultTime} />
