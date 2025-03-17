@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 import { useAudio } from '../context/AudioContext';
 
@@ -9,7 +9,7 @@ interface TimerProps {
 export const Timer = ({ defaultTime }: TimerProps) => {
   const [time, setTime] = useState(300);
   const [isRunning, setIsRunning] = useState(false);
-  const { togglePlay, isPlaying } = useAudio();
+  const { togglePlay, isPlaying, stopMusic, playRocketSound } = useAudio();
 
   useEffect(() => {
     const newTime = parseTimeInput(defaultTime);
@@ -39,6 +39,13 @@ export const Timer = ({ defaultTime }: TimerProps) => {
     setTime(parseTimeInput(defaultTime));
   };
 
+  const handleTimerEnd = useCallback(() => {
+    setIsRunning(false);
+    stopMusic();
+    playRocketSound();
+    window.dispatchEvent(new Event('timerComplete'));
+  }, [stopMusic, playRocketSound]);
+
   useEffect(() => {
     let interval: number;
 
@@ -46,8 +53,7 @@ export const Timer = ({ defaultTime }: TimerProps) => {
       interval = window.setInterval(() => {
         setTime((prevTime) => {
           if (prevTime <= 1) {
-            setIsRunning(false);
-            window.dispatchEvent(new Event('timerComplete'));
+            handleTimerEnd();
             return 0;
           }
           return prevTime - 1;
@@ -56,14 +62,14 @@ export const Timer = ({ defaultTime }: TimerProps) => {
     }
 
     return () => clearInterval(interval);
-  }, [isRunning, time]);
+  }, [isRunning, time, handleTimerEnd]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div
         className="w-full text-center"
         style={{
-          fontSize: 'min(25vw, 25vh)',
+          fontSize: 'min(20vw, 20vh)',
           lineHeight: '0.85',
           fontWeight: 'bold',
           fontFamily: 'monospace',
@@ -78,15 +84,15 @@ export const Timer = ({ defaultTime }: TimerProps) => {
           className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
           {isRunning ?
-            <Pause className="w-[min(6vw,32px)] h-[min(6vw,32px)]" /> :
-            <Play className="w-[min(6vw,32px)] h-[min(6vw,32px)]" />
+            <Pause className="w-[min(5vw,28px)] h-[min(5vw,28px)]" /> :
+            <Play className="w-[min(5vw,28px)] h-[min(5vw,28px)]" />
           }
         </button>
         <button
           onClick={resetTimer}
           className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
-          <RotateCcw className="w-[min(6vw,32px)] h-[min(6vw,32px)]" />
+          <RotateCcw className="w-[min(5vw,28px)] h-[min(5vw,28px)]" />
         </button>
       </div>
     </div>

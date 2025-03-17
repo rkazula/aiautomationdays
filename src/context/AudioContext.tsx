@@ -5,12 +5,20 @@ interface AudioContextType {
   sound: Howl;
   isPlaying: boolean;
   togglePlay: () => void;
+  stopMusic: () => void;
+  playRocketSound: () => void;
 }
 
-const sound = new Howl({
+const backgroundMusic = new Howl({
   src: ['https://raw.githubusercontent.com/rkazula/aiautomationdays/master/assets/AIAutomationDays2025.mp3'],
   volume: 0.5,
   loop: true,
+  html5: true
+});
+
+const rocketSound = new Howl({
+  src: ['https://raw.githubusercontent.com/rkazula/aiautomationdays/master/assets/rocket_sound.mp3'],
+  volume: 0.7,
   html5: true
 });
 
@@ -21,15 +29,30 @@ export const AudioProvider = ({ children }: { children: React.ReactNode }) => {
 
   const togglePlay = () => {
     if (isPlaying) {
-      sound.pause();
+      backgroundMusic.pause();
     } else {
-      sound.play();
+      backgroundMusic.play();
     }
     setIsPlaying(!isPlaying);
   };
 
+  const stopMusic = () => {
+    backgroundMusic.pause();
+    setIsPlaying(false);
+  };
+
+  const playRocketSound = () => {
+    rocketSound.play();
+  };
+
   return (
-    <AudioContext.Provider value={{ sound, isPlaying, togglePlay }}>
+    <AudioContext.Provider value={{
+      sound: backgroundMusic,
+      isPlaying,
+      togglePlay,
+      stopMusic,
+      playRocketSound
+    }}>
       {children}
     </AudioContext.Provider>
   );
