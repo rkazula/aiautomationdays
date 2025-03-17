@@ -74,7 +74,7 @@ function App() {
             className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full -mt-[-25%]"
             style={{ height: 'min(45vh, 70vw)' }}
           >
-            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[1vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300 -mt-[-25%]">
+            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[1vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
               {settings.timerText}
             </h3>
             <Timer defaultTime={settings.defaultTime} />
