@@ -38,26 +38,31 @@ function App() {
           onSettingsChange={setSettings}
         />
 
-        <div className="relative z-10 container mx-auto px-4 min-h-screen flex flex-col items-center justify-between py-[5vh]">
+        <div className="relative z-10 w-[50%] mx-auto min-h-screen flex flex-col items-center justify-between py-[5vh]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-center"
+            className="text-center mb-8"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               {settings.title}
             </h1>
-            <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
+            <motion.p
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="text-base md:text-lg text-gray-300 mt-4"
+            >
               {settings.subtitle}
-            </p>
+            </motion.p>
           </motion.div>
 
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="w-[min(25vw,25vh)] aspect-square"
+            className="w-[min(22vw,22vh)] aspect-square mb-16"
           >
             <SpaceCat />
           </motion.div>
@@ -66,8 +71,8 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-[95%] max-w-[95vw] mx-auto"
-            style={{ height: 'min(60vh, 90vw)' }}
+            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full mt-auto"
+            style={{ height: 'min(45vh, 70vw)' }}
           >
             <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[2vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
               {settings.timerText}
