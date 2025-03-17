@@ -53,12 +53,12 @@ export const SpaceCat = () => {
   }, []);
 
   return (
-    <div className="relative w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64">
+    <div className="relative w-full h-full">
       <div
         ref={boxRef}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <div className="w-36 sm:w-40 md:w-48 h-36 sm:h-40 md:h-48 bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg shadow-xl transform rotate-3">
+        <div className="w-full h-full bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg shadow-xl transform rotate-3">
           <div
             ref={catRef}
             className="relative w-full h-full overflow-hidden rounded-lg"

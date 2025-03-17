@@ -59,10 +59,16 @@ export const Timer = ({ defaultTime }: TimerProps) => {
   }, [isRunning, time]);
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center justify-center w-full h-full">
       <div
-        className="text-[120px] xs:text-[140px] sm:text-[180px] md:text-[240px] lg:text-[280px] xl:text-[320px] 2xl:text-[360px] font-bold font-mono leading-[0.8] tracking-tighter"
-        style={{ lineHeight: '0.85' }}
+        className="w-full text-center"
+        style={{
+          fontSize: 'min(25vw, 25vh)',
+          lineHeight: '0.85',
+          fontWeight: 'bold',
+          fontFamily: 'monospace',
+          letterSpacing: '-0.05em'
+        }}
       >
         {formatTime(time)}
       </div>
@@ -72,15 +78,15 @@ export const Timer = ({ defaultTime }: TimerProps) => {
           className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
           {isRunning ?
-            <Pause size={24} className="md:w-8 md:h-8" /> :
-            <Play size={24} className="md:w-8 md:h-8" />
+            <Pause className="w-[min(6vw,32px)] h-[min(6vw,32px)]" /> :
+            <Play className="w-[min(6vw,32px)] h-[min(6vw,32px)]" />
           }
         </button>
         <button
           onClick={resetTimer}
           className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         >
-          <RotateCcw size={24} className="md:w-8 md:h-8" />
+          <RotateCcw className="w-[min(6vw,32px)] h-[min(6vw,32px)]" />
         </button>
       </div>
     </div>

@@ -38,8 +38,7 @@ function App() {
           onSettingsChange={setSettings}
         />
 
-        {/* Main content */}
-        <div className="relative z-10 container mx-auto px-4 py-4 min-h-screen flex flex-col items-center justify-center gap-4 lg:gap-8">
+        <div className="relative z-10 container mx-auto px-4 min-h-screen flex flex-col items-center justify-between py-[5vh]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +57,7 @@ function App() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="scale-75 sm:scale-90 md:scale-100 transform-gpu"
+            className="w-[min(25vw,25vh)] aspect-square"
           >
             <SpaceCat />
           </motion.div>
@@ -67,9 +66,10 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="glass-panel p-4 sm:p-6 lg:p-8 rounded-2xl backdrop-blur-lg bg-white/5 w-[95%] sm:w-[85%] md:w-[90%] lg:w-[1000px] max-w-[95vw] mx-auto"
+            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-[95%] max-w-[95vw] mx-auto"
+            style={{ height: 'min(60vh, 90vw)' }}
           >
-            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-2 lg:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
+            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[2vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
               {settings.timerText}
             </h3>
             <Timer defaultTime={settings.defaultTime} />
@@ -82,4 +82,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
