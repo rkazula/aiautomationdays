@@ -9,6 +9,9 @@ export default {
         'carbon-900': '#0A0A0A',
         'carbon-950': '#050505',
       },
+      screens: {
+        'xs': '375px',
+      },
     },
   },
   plugins: [],

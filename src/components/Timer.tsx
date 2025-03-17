@@ -59,11 +59,14 @@ export const Timer = ({ defaultTime }: TimerProps) => {
   }, [isRunning, time]);
 
   return (
-    <div className="flex flex-col items-center space-y-4 md:space-y-8">
-      <div className="text-[140px] sm:text-[220px] md:text-[360px] font-bold font-mono leading-none tracking-tighter">
+    <div className="flex flex-col items-center space-y-4">
+      <div
+        className="text-[120px] xs:text-[140px] sm:text-[180px] md:text-[240px] lg:text-[280px] xl:text-[320px] 2xl:text-[360px] font-bold font-mono leading-[0.8] tracking-tighter"
+        style={{ lineHeight: '0.85' }}
+      >
         {formatTime(time)}
       </div>
-      <div className="flex space-x-4 md:space-x-6">
+      <div className="flex space-x-4 md:space-x-6 mt-4">
         <button
           onClick={toggleTimer}
           className="p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
