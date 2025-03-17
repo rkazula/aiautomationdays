@@ -14,7 +14,7 @@ function App() {
       title: 'AI & Automation Days 2025',
       subtitle: 'Za chwilę zaczynamy prezentację!',
       defaultTime: '5:00',
-      timerText: 'Countdown to Launch'
+      timerText: 'Za chwilę zaczynamy kolejną prezentację:'
     };
   });
 
@@ -71,7 +71,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full -mt-[15%]"
+            className="glass-panel p-[3vh] rounded-2xl backdrop-blur-lg bg-white/5 w-full -mt-[25%]"
             style={{ height: 'min(45vh, 70vw)' }}
           >
             <h3 className="text-xl sm:text-2xl font-semibold text-center mb-[1vh] bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
